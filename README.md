@@ -23,8 +23,10 @@ Paperless-ngx is the official successor to the original [Paperless](https://gith
 
 Thanks to the generous folks at [DigitalOcean](https://m.do.co/c/8d70b916d462), a demo is available at [demo.paperless-ngx.com](https://demo.paperless-ngx.com) using login `demo` / `demo`. _Note: demo content is reset frequently and confidential information should not be uploaded._
 
+- [Paperless-ngx](#paperless-ngx)
 - [Features](#features)
 - [Getting started](#getting-started)
+    - [Documentation](#documentation)
 - [Contributing](#contributing)
   - [Community Support](#community-support)
   - [Translation](#translation)
@@ -55,13 +57,11 @@ A full list of [features](https://docs.paperless-ngx.com/#features) and [screens
 
 # Getting started
 
-The easiest way to deploy paperless is `docker compose`. The files in the [`/docker/compose` directory](https://github.com/paperless-ngx/paperless-ngx/tree/main/docker/compose) are configured to pull the image from the GitHub container registry.
-
-If you'd like to jump right in, you can configure a `docker compose` environment with our install script:
-
 ```bash
-bash -c "$(curl -L https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/install-paperless-ngx.sh)"
-```
+ podman  build -t papper_adamos -f Dockerfile --format=docker 
+ cd  docker/compose/
+ podman-compose  -f docker-compose.postgres-tika.yml  up
+ ```
 
 More details and step-by-step guides for alternative installation methods can be found in [the documentation](https://docs.paperless-ngx.com/setup/#installation).
 
