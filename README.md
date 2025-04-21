@@ -58,6 +58,12 @@ A full list of [features](https://docs.paperless-ngx.com/#features) and [screens
 # Getting started
 
 ```bash
+git clone https://github.com/genrihverter/paperless_ngx.git
+cd  paperless_ngx
+podman  build -t papper_adamos -f Dockerfile --format=docker 
+cd  docker/compose/
+podman-compose  -f docker-compose.postgres-tika.yml  up
+ ```
  podman  build -t papper_adamos -f Dockerfile --format=docker 
  cd  docker/compose/
  podman-compose  -f docker-compose.postgres-tika.yml  up
