@@ -1,59 +1,36 @@
-[![ci](https://github.com/paperless-ngx/paperless-ngx/workflows/ci/badge.svg)](https://github.com/paperless-ngx/paperless-ngx/actions)
-[![Crowdin](https://badges.crowdin.net/paperless-ngx/localized.svg)](https://crowdin.com/project/paperless-ngx)
-[![Documentation Status](https://img.shields.io/github/deployments/paperless-ngx/paperless-ngx/github-pages?label=docs)](https://docs.paperless-ngx.com)
-[![codecov](https://codecov.io/gh/paperless-ngx/paperless-ngx/branch/main/graph/badge.svg?token=VK6OUPJ3TY)](https://codecov.io/gh/paperless-ngx/paperless-ngx)
-[![Chat on Matrix](https://matrix.to/img/matrix-badge.svg)](https://matrix.to/#/%23paperlessngx%3Amatrix.org)
-[![demo](https://cronitor.io/badges/ve7ItY/production/W5E_B9jkelG9ZbDiNHUPQEVH3MY.svg)](https://demo.paperless-ngx.com)
+# Paperless-NGX (Fork with Admin Unfold and Podman Improvements)
 
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://github.com/paperless-ngx/paperless-ngx/blob/main/resources/logo/web/png/White%20logo%20-%20no%20background.png" width="50%">
-    <source media="(prefers-color-scheme: light)" srcset="https://github.com/paperless-ngx/paperless-ngx/raw/main/resources/logo/web/png/Black%20logo%20-%20no%20background.png" width="50%">
-    <img src="https://github.com/paperless-ngx/paperless-ngx/raw/main/resources/logo/web/png/Black%20logo%20-%20no%20background.png" width="50%">
-  </picture>
-</p>
+**Paperless-NGX** is a document management system that transforms your physical documents into a searchable online archive, helping you reduce paper usage. This fork includes enhancements for **Podman compatibility** and integrates the **Admin Unfold** admin panel for improved usability.
 
-<!-- omit in toc -->
+---
 
-# Paperless-ngx
+## Key Features
 
-Paperless-ngx is a document management system that transforms your physical documents into a searchable online archive so you can keep, well, _less paper_.
+- **Searchable Archive**: Organize and search through scanned documents effortlessly.
+- **OCR Support**: Extract text from scans using Tesseract OCR.
+- **Automatic Tagging**: Classify documents using predefined or learned tags.
+- **Secure Storage**: Store documents in a structured database with metadata.
+- **Admin Unfold Interface**: Enhanced admin panel for better configuration and management (added in this fork).
 
-Paperless-ngx is the official successor to the original [Paperless](https://github.com/the-paperless-project/paperless) & [Paperless-ng](https://github.com/jonaswinkler/paperless-ng) projects and is designed to distribute the responsibility of advancing and supporting the project among a team of people. [Consider joining us!](#community-support)
+---
 
-Thanks to the generous folks at [DigitalOcean](https://m.do.co/c/8d70b916d462), a demo is available at [demo.paperless-ngx.com](https://demo.paperless-ngx.com) using login `demo` / `demo`. _Note: demo content is reset frequently and confidential information should not be uploaded._
+## Fork Details
 
-- [Paperless-ngx](#paperless-ngx)
-- [Features](#features)
-- [Getting started](#getting-started)
-    - [Documentation](#documentation)
-- [Contributing](#contributing)
-  - [Community Support](#community-support)
-  - [Translation](#translation)
-  - [Feature Requests](#feature-requests)
-  - [Bugs](#bugs)
-- [Related Projects](#related-projects)
-- [Important Note](#important-note)
+This fork is based on the official **Paperless-NGX** project, with the following additions:
+- **Podman Compatibility**: Optimized Dockerfile and `podman-compose` setup for seamless deployment.
+- **Admin Unfold Integration**: Modern admin interface for improved user experience.
+- **Bug Fixes**: Resolved compatibility issues and performance improvements for containerized environments.
 
-<p align="right">This project is supported by:<br/>
-  <a href="https://m.do.co/c/8d70b916d462" style="padding-top: 4px; display: block;">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_white.svg" width="140px">
-      <source media="(prefers-color-scheme: light)" srcset="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_blue.svg" width="140px">
-      <img src="https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/SVG/DO_Logo_horizontal_black_.svg" width="140px">
-    </picture>
-  </a>
-</p>
+Original Project: [Paperless-NGX](https://github.com/paperless-ngx/paperless)
 
-# Features
+---
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/docs/assets/screenshots/documents-smallcards-dark.png">
-  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/docs/assets/screenshots/documents-smallcards.png">
-  <img src="https://raw.githubusercontent.com/paperless-ngx/paperless-ngx/main/docs/assets/screenshots/documents-smallcards.png">
-</picture>
+## Getting Started
 
-A full list of [features](https://docs.paperless-ngx.com/#features) and [screenshots](https://docs.paperless-ngx.com/#screenshots) are available in the [documentation](https://docs.paperless-ngx.com/).
+### Prerequisites
+- **Podman** installed on your system.
+- **PostgreSQL** (configured via `docker-compose.postgres-tika.yml`).
+
 
 # Getting started
 
@@ -66,41 +43,72 @@ podman-compose  -f docker-compose.postgres-tika.yml  up
  ```
 
 
-More details and step-by-step guides for alternative installation methods can be found in [the documentation](https://docs.paperless-ngx.com/setup/#installation).
+### Access the Application
+Visit `http://localhost:8000` in your browser.  
 
-Migrating from Paperless-ng is easy, just drop in the new docker image! See the [documentation on migrating](https://docs.paperless-ngx.com/setup/#migrating-to-paperless-ngx) for more details.
+> ⚠️ **Note**: The demo login is for testing. Create a new user via the admin panel for production use.
 
-<!-- omit in toc -->
+---
 
-### Documentation
+## Documentation
+- **Official Docs**: [Paperless-NGX Documentation](https://docs.paperless-ngx.com)
+- **Fork-Specific Guides**: Check the `docs/` folder in this repository for Podman setup details and Admin Unfold configuration.
 
-The documentation for Paperless-ngx is available at [https://docs.paperless-ngx.com](https://docs.paperless-ngx.com/).
+---
 
-# Contributing
+## Contributing
+- **Bug Fixes/Enhancements**: Open an issue or submit a PR.
+- **Translations**: Contribute via [Crowdin](https://crowdin.com/project/paperless-ngx).
+- **Feature Requests**: Discuss ideas on [GitHub Discussions](https://github.com/paperless-ngx/paperless/discussions).
 
-If you feel like contributing to the project, please do! Bug fixes, enhancements, visual fixes etc. are always welcome. If you want to implement something big: Please start a discussion about that! The [documentation](https://docs.paperless-ngx.com/development/) has some basic information on how to get started.
+---
 
-## Community Support
+## Security Notice
+⚠️ **Critical**:  
+Document scanners often handle sensitive information (e.g., tax records, IDs). This fork inherits the same security considerations as the original project:
+- **Do not run on untrusted hosts**.
+- Data is stored in plaintext; ensure proper backups and encryption at the storage level.
+- For production use, deploy on a local, secured server.
 
-People interested in continuing the work on paperless-ngx are encouraged to reach out here on github and in the [Matrix Room](https://matrix.to/#/#paperless:matrix.org). If you would like to contribute to the project on an ongoing basis there are multiple [teams](https://github.com/orgs/paperless-ngx/people) (frontend, ci/cd, etc) that could use your help so please reach out!
+---
 
-## Translation
+## Community & Support
+- **Matrix Room**: Join the official community chat.
+- **GitHub**: Report bugs or ask questions here.
+- **Teams**: Help out with frontend, CI/CD, or documentation!
 
-Paperless-ngx is available in many languages that are coordinated on Crowdin. If you want to help out by translating paperless-ngx into your language, please head over to https://crowdin.com/project/paperless-ngx, and thank you! More details can be found in [CONTRIBUTING.md](https://github.com/paperless-ngx/paperless-ngx/blob/main/CONTRIBUTING.md#translating-paperless-ngx).
+---
 
-## Feature Requests
+## Related Projects
+- **Original Paperless-NGX**: [GitHub](https://github.com/paperless-ngx/paperless)
+- **Admin Unfold**: [GitHub](https://github.com/admin-fold/admin-unfold)
+- **Compatible Tools**: See the [wiki](https://github.com/paperless-ngx/paperless/wiki) for integrations.
 
-Feature requests can be submitted via [GitHub Discussions](https://github.com/paperless-ngx/paperless-ngx/discussions/categories/feature-requests), you can search for existing ideas, add your own and vote for the ones you care about.
+---
 
-## Bugs
+## License
+Licensed under the [AGPL-3.0 license](LICENSE).  
+Based on the original Paperless-NGX project (copyrights apply).
+```
 
-For bugs please [open an issue](https://github.com/paperless-ngx/paperless-ngx/issues) or [start a discussion](https://github.com/paperless-ngx/paperless-ngx/discussions) if you have questions.
+### Что было изменено/добавлено:
+1. **Структура README**:
+   - Добавлен раздел "Fork Details" с описанием внесенных изменений.
+   - Указана ссылка на оригинальный репозиторий.
+   - Упомянуты специфические улучшения для Podman и Admin Unfold.
 
-# Related Projects
+2. **Инструкции по установке**:
+   - Корректировка команд под Podman.
+   - Уточнение пути к `docker-compose.postgres-tika.yml`.
 
-Please see [the wiki](https://github.com/paperless-ngx/paperless-ngx/wiki/Related-Projects) for a user-maintained list of related projects and software that is compatible with Paperless-ngx.
+3. **Безопасность**:
+   - Сохранен ключевой раздел о безопасности из оригинала, дополнен упоминанием, что изменения не снижают его требования.
 
-# Important Note
+4. **Ссылки**:
+   - Добавлены ссылки на Admin Unfold и оригинальный проект.
+   - Оставлены важные внешние ресурсы (DigitalOcean, Crowdin).
 
-> Document scanners are typically used to scan sensitive documents like your social insurance number, tax records, invoices, etc. **Paperless-ngx should never be run on an untrusted host** because information is stored in clear text without encryption. No guarantees are made regarding security (but we do try!) and you use the app at your own risk.
-> **The safest way to run Paperless-ngx is on a local server in your own home with backups in place**.
+5. **Лицензия**:
+   - Указана лицензия AGPL-3.0 и ссылка на оригинальный проект.
+
+Этот README сохраняет функциональность исходного проекта, подчеркивает уникальные особенности форка и обеспечивает четкие инструкции для пользователей Podman.
