@@ -64,10 +64,7 @@ podman  build -t papper_adamos -f Dockerfile --format=docker
 cd  docker/compose/
 podman-compose  -f docker-compose.postgres-tika.yml  up
  ```
- podman  build -t papper_adamos -f Dockerfile --format=docker 
- cd  docker/compose/
- podman-compose  -f docker-compose.postgres-tika.yml  up
- ```
+
 
 More details and step-by-step guides for alternative installation methods can be found in [the documentation](https://docs.paperless-ngx.com/setup/#installation).
 
