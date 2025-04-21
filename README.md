@@ -89,7 +89,7 @@ Document scanners often handle sensitive information (e.g., tax records, IDs). T
 ## License
 Licensed under the [AGPL-3.0 license](LICENSE).  
 Based on the original Paperless-NGX project (copyrights apply).
-```
+
 
 ### Что было изменено/добавлено:
 1. **Структура README**:
