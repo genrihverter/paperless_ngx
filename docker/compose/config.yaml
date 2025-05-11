@@ -32,22 +32,26 @@
 services:
   broker:
     image: docker.io/library/redis:7
+    network: mynet
     restart: unless-stopped
     volumes:
       - redisdata:/data
 
   db:
     image: docker.io/library/postgres:17
+    network: mynet
     restart: unless-stopped
     volumes:
       - pgdata:/var/lib/postgresql/data
+   
     environment:
       POSTGRES_DB: paperless
       POSTGRES_USER: paperless
       POSTGRES_PASSWORD: paperless
 
   webserver:
-    image: localhost/papper_adamos     #ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: papper_adamos     #ghcr.io/paperless-ngx/paperless-ngx:latest
+    network: mynet 
     restart: unless-stopped
     depends_on:
       - db
@@ -56,6 +60,7 @@ services:
       - tika
     ports:
       - "8000:8000"
+    
     volumes:
       - data:/usr/src/paperless/data
       - media:/usr/src/paperless/media
@@ -68,11 +73,13 @@ services:
       PAPERLESS_TIKA_ENABLED: 1
       PAPERLESS_TIKA_GOTENBERG_ENDPOINT: http://gotenberg:3000
       PAPERLESS_TIKA_ENDPOINT: http://tika:9998
+      PAPERLESS_TIME_ZONE: Europe/Moscow
+
 
   gotenberg:
     image: docker.io/gotenberg/gotenberg:8.19
     restart: unless-stopped
-
+    network: mynet
     # The gotenberg chromium route is used to convert .eml files. We do not
     # want to allow external content like tracking pixels or even javascript.
     command:
@@ -82,8 +89,13 @@ services:
 
   tika:
     image: docker.io/apache/tika:latest
+    network: mynet
     restart: unless-stopped
-
+networks:
+    mynet:
+        driver: bridge
+        subnet: 192.168.2.0/24
+        gateway: 192.168.2.1
 volumes:
   data:
   media:
